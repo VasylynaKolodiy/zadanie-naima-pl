@@ -1,0 +1,16 @@
+@import "../vars";
+
+.button{
+  cursor: pointer;
+  padding: 16px 24px;
+  backdrop-filter: blur(4px);
+  color: $color-text-light;
+  background-color: $color-text;
+  transition: background-color .3s linear;
+
+  @include fontSize(600, 16px);
+
+  &:hover{
+    background-color: $background-button-hover;
+  }
+}

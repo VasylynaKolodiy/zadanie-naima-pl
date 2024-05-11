@@ -1,0 +1,80 @@
+@import "vars";
+
+*, *::before, *::after {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+html {
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+}
+
+body{
+  font-family: "Raleway", sans-serif;
+  font-style: normal;
+
+  @include fontSize(600, 24px);
+}
+
+h1 {
+  @include fontSize(600, 128px);
+
+  color: $color-text-light;
+  line-height: 100%;
+}
+
+h2 {}
+
+h3 {}
+
+ul, li {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+a {
+  display: block;
+  color: inherit;
+  text-decoration: none;
+}
+
+p {}
+
+img,
+svg {
+  pointer-events: none;
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+button {
+  outline: none;
+  border: 0;
+  font-family: inherit;
+  font-size: inherit;
+  color: inherit;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.container {
+  display: block;
+  width: 100%;
+  max-width: $size-max-width;
+  margin: 0 auto;
+  padding: 0 182px;
+}
+
+.section {
+
+}
+
+.menu {
+}
+
+.title {
+}

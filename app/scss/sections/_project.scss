@@ -1,0 +1,105 @@
+@import "../vars";
+
+.project {
+  padding: 200px 0 450px 0;
+
+  &__title {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    position: relative;
+    margin-bottom: 82px;
+    color: $color-text;
+
+    &::after {
+      content: "";
+      display: block;
+      height: 0.5px;
+      width: 100%;
+      background-color: $color-text-black;
+      position: absolute;
+      bottom: -56px;
+      left: 0;
+      right: 0;
+    }
+  }
+
+  &__label {
+    margin-bottom: 82px;
+    color: $color-text-black;
+  }
+
+  &__info {
+    @include fontSize(600, 24px);
+
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    color: $color-text;
+    gap: $size-gap;
+  }
+
+  &__column:first-child {
+    @include fontSize(400, 40px);
+
+    line-height: 125%;
+    width: 40%;
+  }
+
+  &__column:last-child {
+    @include fontSize(400, 24px);
+
+    width: 56%;
+  }
+
+  &__description {
+    margin-bottom: 116px;
+  }
+
+  .list {
+    display: flex;
+    row-gap: 75px;
+    position: relative;
+    flex-wrap: wrap;
+
+    &__item {
+      width: 45%;
+      display: flex;
+      align-items: flex-start;
+      justify-content: flex-start;
+      gap: 50px;
+    }
+
+    &__text {
+      @include fontSize(700, 16px);
+
+      line-height: 140%;
+      color: $color-text-dark;
+    }
+
+    &::before{
+      content: "";
+      display: block;
+      position: absolute;
+      background-color: $color-text-black;
+      width: .5px;
+      top: 0;
+      left: 40%;
+      transform: translateX(-40%);
+      height: 100%;
+    }
+
+    &::after{
+      content: "";
+      display: block;
+      position: absolute;
+      background-color: $color-text-black;
+      height: .5px;
+      left: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 80%;
+    }
+  }
+}
+

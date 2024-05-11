@@ -1,0 +1,20 @@
+// colors
+$color-text: #3C3C3C;
+$color-text-dark: #080808;
+$color-text-light: #FAFAFA;
+$color-text-slider: #F4E6D5;
+$color-text-black: #000000;
+$background-button-hover: #5A5A5A;
+
+// sizes
+$size-max-width: 1920px;
+$size-gap: 32px;
+
+// mixins
+@mixin fontSize($weight, $size) {
+  font-weight: $weight;
+  font-size: $size;
+  line-height: 170%;
+}
+
+

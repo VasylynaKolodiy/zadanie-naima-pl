@@ -1,0 +1,38 @@
+@import "../vars";
+
+.header{
+  width: 100%;
+  position: fixed;
+  top: 0;
+  z-index: 99;
+  background-color: transparent;
+  transition: background-color .3s ease-in-out;
+
+  &.fixed {
+    background-color: $color-text;
+  }
+
+  &__container{
+    width: 100%;
+    max-width: $size-max-width;
+    margin: 0 auto;
+    padding: 36px 52px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: $size-gap;
+  }
+
+  & .logo{
+    color: $color-text-light;
+
+    @include fontSize(900, 36px);
+  }
+
+  & .navigation{
+    display: flex;
+    align-items: center;
+    gap: $size-gap;
+
+  }
+}
