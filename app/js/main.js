@@ -32,7 +32,7 @@ const data = [
         hab: 113.7,
         balcon: 23.3,
         terrasse: 72.2,
-        statut: STATUS.sold,
+        statut: STATUS.available,
     },
 
     {
@@ -52,7 +52,7 @@ const data = [
         hab: 84.4,
         balcon: 32.8,
         terrasse: '',
-        statut: STATUS.available,
+        statut: STATUS.sold,
     },
 
     {
@@ -106,7 +106,7 @@ function applyStatusClassToLot(rowData) {
 
 function handleTableHover() {
     $('#table tbody tr').hover(function() {
-        const lotNumber = $(this).find('td:first').text();
+        const lotNumber = $(this).find('td:first-child').text();
         $(`.lot-${lotNumber}`).addClass('hover');
     }, function() {
         $('.facade__img svg path').removeClass('hover');
@@ -115,11 +115,11 @@ function handleTableHover() {
 
 function handleSvgPathHover() {
     $('.facade__img svg path').hover(function() {
-        console.log(5656)
         const lotNumber = $(this).data('lot');
-        $(`.lot-${lotNumber}`).addClass('hover');
+        $(`#table tbody tr:nth-child(${lotNumber})`).addClass('hover');
     }, function() {
-        $('#table tbody tr').removeClass('hover');
+        const lotNumber = $(this).data('lot');
+        $(`#table tbody tr:nth-child(${lotNumber})`).removeClass('hover');
     });
 }
 
