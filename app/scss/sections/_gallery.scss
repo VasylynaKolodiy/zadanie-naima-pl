@@ -1,0 +1,110 @@
+@import "../vars";
+
+.gallery {
+  padding: 266px 0 154px 0;
+  background-color: $color-text;
+  position: relative;
+
+  &__info {
+    padding: 0 0 0 206px;
+  }
+
+  .list {
+    color: $color-text-slider;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: $size-gap;
+
+    &__title {
+      @include fontSize(600, 20px);
+
+      line-height: 125%;
+      text-align: left;
+      text-transform: capitalize;
+      letter-spacing: 0.1em;
+      margin-bottom: 16px;
+    }
+
+    &__text {
+      @include fontSize(400, 16px);
+
+      line-height: 125%;
+      letter-spacing: 0;
+    }
+
+    &__item:first-of-type .list__text {
+      @include fontSize(400, 24px);
+
+      line-height: 120%;
+    }
+  }
+
+  .wrapper {
+    padding: 0 0 0 388px;
+    max-width: $size-max-width;
+    margin: 0 auto;
+  }
+
+  .slider {
+    position: relative;
+
+    &__item {
+      padding: 0 56px 0 0;
+    }
+
+    &__img {
+      height: auto;
+      width: 100%;
+      object-fit: cover;
+    }
+
+    & .slick-arrow {
+      background: transparent;
+      width: 45px;
+      height: 45px;
+      border: none;
+    }
+
+    & .slick-prev {
+      position: absolute;
+      left: -206px;
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 5;
+      border-bottom: 2px solid;
+      border-left: 2px solid;
+      font-size: 0;
+      transition: .5s ease;
+
+      &:hover {
+        border-bottom: 3px solid;
+        border-left: 3px solid;
+      }
+
+      &::before{
+        content: url("../../images/icons/slider-arrow.svg");
+      }
+    }
+
+    & .slick-next {
+      position: absolute;
+      left: -147px;
+      top: 50%;
+      border-bottom: 2px solid;
+      border-left: 2px solid;
+      font-size: 0;
+      transition: .5s ease;
+      transform: translateY(-50%) rotate(180deg);
+
+      &:hover {
+        border-bottom: 3px solid;
+        border-left: 3px solid;
+      }
+
+      &::before{
+        content: url("../../images/icons/slider-arrow.svg");
+      }
+    }
+  }
+}
