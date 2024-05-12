@@ -1,9 +1,10 @@
 @import "../vars";
 
 .gallery {
-  padding: 266px 0 154px 0;
+  padding: 0 0 154px 0;
   background-color: $color-text;
   position: relative;
+  height: 500px;
 
   &__info {
     padding: 0 0 0 206px;
@@ -15,6 +16,7 @@
     align-items: flex-start;
     justify-content: space-between;
     gap: $size-gap;
+    transform: translateY(-154px);
 
     &__title {
       @include fontSize(600, 20px);
@@ -44,6 +46,7 @@
     padding: 0 0 0 388px;
     max-width: $size-max-width;
     margin: 0 auto;
+    transform: translateY(-284px);
   }
 
   .slider {
@@ -51,10 +54,12 @@
 
     &__item {
       padding: 0 56px 0 0;
+      height: 400px;
+      overflow: hidden;
     }
 
     &__img {
-      height: auto;
+      height: 400px;
       width: 100%;
       object-fit: cover;
     }
@@ -69,8 +74,8 @@
     & .slick-prev {
       position: absolute;
       left: -206px;
-      top: 50%;
-      transform: translateY(-50%);
+      top: 100%;
+      transform: translateY(-100%);
       z-index: 5;
       border-bottom: 2px solid;
       border-left: 2px solid;
@@ -90,12 +95,12 @@
     & .slick-next {
       position: absolute;
       left: -147px;
-      top: 50%;
+      top: 100%;
       border-bottom: 2px solid;
       border-left: 2px solid;
       font-size: 0;
       transition: .5s ease;
-      transform: translateY(-50%) rotate(180deg);
+      transform: translateY(-100%) rotate(180deg);
 
       &:hover {
         border-bottom: 3px solid;
