@@ -10,6 +10,10 @@
 
   &.fixed {
     background-color: $color-text;
+
+    .header__container{
+      padding: 16px 52px;
+    }
   }
 
   &__container{
@@ -21,6 +25,7 @@
     align-items: center;
     justify-content: space-between;
     gap: $size-gap;
+    transition: padding .3s ease-in-out;
   }
 
   & .logo{

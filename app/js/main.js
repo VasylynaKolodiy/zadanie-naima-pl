@@ -67,12 +67,8 @@ const data = [
 ];
 
 function handleHeaderOnScroll() {
-    $(window).scroll(function () {
-        if ($(window).scrollTop() > 0) {
-            $(".header").addClass("fixed");
-        } else {
-            $(".header").removeClass("fixed");
-        }
+    $(window).scroll(() => {
+        $(".header").toggleClass("fixed", $(window).scrollTop() > 0);
     });
 }
 
@@ -90,7 +86,7 @@ function fillTableWithData(data) {
     data.forEach(rowData => {
         const row = $('<tr></tr>').addClass(rowData.statut);
         Object.entries(rowData).forEach(([key, value]) => {
-            const unit = (key === 'hab' || key === 'balcon' || key === 'terrasse') ? 'm<sup>2</sup>' : '';
+            const unit = (['hab', 'balcon', 'terrasse'].includes(key)) ? 'm<sup>2</sup>' : '';
             row.append(`<td>${value} ${value ? unit : ''}</td>`);
         });
         applyStatusClassToLot(rowData);
@@ -99,16 +95,14 @@ function fillTableWithData(data) {
 }
 
 function applyStatusClassToLot(rowData) {
-    const lotNumber = rowData.lot;
-    const status = rowData.statut;
-    $(`.lot-${lotNumber}`).addClass(status);
+    $(`.lot-${rowData.lot}`).addClass(rowData.statut);
 }
 
 function handleTableHover() {
-    $('#table tbody tr').hover(function() {
+    $('#table tbody tr').hover(function () {
         const lotNumber = $(this).find('td:first-child').text();
         $(`.lot-${lotNumber}`).addClass('hover');
-    }, function() {
+    }, () => {
         $('.facade__img svg path').removeClass('hover');
     });
 }
@@ -124,42 +118,28 @@ function handleSvgPathHover() {
 }
 
 function handleOpenModal() {
-    $(`.facade__img svg path:not('.${STATUS.sold}')`).click(function() {
+    $('.facade__img svg path, #table tbody tr').not(`.${STATUS.sold}`).click(function () {
+        const lotNumber = $(this).data().lot || $(this).find('td:first-child').text().trim();
         $('.extra-box').addClass('open');
-
-        const lotNumber = `${$(this).data().lot}`;
-        const header = `Lot ${lotNumber}`;
-        $('.modal__header').text(header);
-
-        const img = $('<img src="" alt="lot"/>').attr({
-            src: `./images/plans/residence-lot-${lotNumber}.png`,
-            alt: 'Draft'
-        });
-        $('.modal__img').html(img);
-
+        $('.modal__header').text(`Lot ${lotNumber}`);
+        $('.modal__img').html(`<img src="./images/plans/residence-lot-${lotNumber}.png" alt="lot"/>`);
     });
-
-    $(`#table tbody tr:not('.${STATUS.sold}')`).click(function() {
-        $('.extra-box').addClass('open');
-
-        const lotNumber = $(this).find('td:first-child').text();
-        const header = `Lot ${lotNumber}`;
-        $('.modal__header').text(header);
-
-
-
-    })
-
-
 }
 
 function handleCloseModal() {
-    $('.layer, .modal__close').click(function() {
+    $('.layer, .modal__close').click(() => {
         $('.extra-box').removeClass('open');
     });
 }
 
-$(document).ready(function() {
+function downloadFile() {
+    $('.download').click(() => {
+        const lotNumber = $('.modal__header').text().slice(-1);
+        $('.download').attr({href: `./images/plans/residence-lot-${lotNumber}.pdf`});
+    });
+}
+
+$(document).ready(() => {
     handleHeaderOnScroll();
     initializeSlider();
     fillTableWithData(data);
@@ -167,4 +147,5 @@ $(document).ready(function() {
     handleSvgPathHover();
     handleOpenModal();
     handleCloseModal();
+    downloadFile();
 });
