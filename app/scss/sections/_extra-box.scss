@@ -1,0 +1,61 @@
+@import "../vars";
+
+.extra-box {
+
+  .layer {
+    position: fixed;
+    z-index: 30;
+    top: 0;
+    right: 0;
+    background-color: transparent;
+    transition: all 1s ease-in-out;
+    cursor: pointer;
+  }
+
+  .modal {
+    height: 90vh;
+    width: 90vw;
+    position: fixed;
+    z-index: 40;
+    top: 50%;
+    left: -100%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    transition: all 1s ease-in-out;
+
+    &__header {
+
+
+    }
+
+    &__img {
+
+    }
+
+    &__buttons {
+
+    }
+
+    &__close{
+      width: 20px;
+      height: 20px;
+      position: absolute;
+      top: 20px;
+      right: 32px;
+      cursor: pointer;
+    }
+  }
+
+  &.open {
+    .modal {
+      left: 50%;
+    }
+
+    .layer {
+      bottom: 0;
+      left: 0;
+      background-color: rgba($background-table-head, 0.9);
+    }
+
+  }
+}

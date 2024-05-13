@@ -88,7 +88,7 @@ function initializeSlider() {
 function fillTableWithData(data) {
     const tbody = $('#table tbody');
     data.forEach(rowData => {
-        const row = $('<tr></tr>');
+        const row = $('<tr></tr>').addClass(rowData.statut);
         Object.entries(rowData).forEach(([key, value]) => {
             const unit = (key === 'hab' || key === 'balcon' || key === 'terrasse') ? 'm<sup>2</sup>' : '';
             row.append(`<td>${value} ${value ? unit : ''}</td>`);
@@ -123,10 +123,30 @@ function handleSvgPathHover() {
     });
 }
 
+function handleOpenModal() {
+    $(`.facade__img svg path:not('.${STATUS.sold}')`).click(function() {
+        $('.extra-box').addClass('open');
+    });
+
+    $(`#table tbody tr:not('.${STATUS.sold}')`).click(function() {
+        $('.extra-box').addClass('open');
+    })
+
+
+}
+
+function handleCloseModal() {
+    $('.layer, .modal__close').click(function() {
+        $('.extra-box').removeClass('open');
+    });
+}
+
 $(document).ready(function() {
     handleHeaderOnScroll();
     initializeSlider();
     fillTableWithData(data);
     handleTableHover();
     handleSvgPathHover();
+    handleOpenModal();
+    handleCloseModal();
 });
