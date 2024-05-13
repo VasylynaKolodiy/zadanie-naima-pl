@@ -13,8 +13,8 @@
   }
 
   .modal {
-    height: 90vh;
-    width: 90vw;
+    padding: 40px 80px 80px 80px;
+    max-height: 90vh;
     position: fixed;
     z-index: 40;
     top: 50%;
@@ -22,26 +22,49 @@
     transform: translate(-50%, -50%);
     background-color: white;
     transition: all 1s ease-in-out;
+    gap: 22px;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
 
     &__header {
+      @include fontSize(600, 16px);
 
-
+      line-height: 24px;
+      background-color: $color-text;
+      color: white;
+      padding: 10px;
+      text-align: center;
+      text-transform: uppercase;
     }
 
     &__img {
+      overflow: hidden;
+      width: 100%;
+      height: auto;
+      margin: 0 auto;
+      justify-content: center;
+      display: flex;
 
+      & img{
+        object-fit: contain;
+      }
     }
 
     &__buttons {
-
+      display: flex;
+      gap: $size-gap;
+      align-items: center;
+      justify-content: space-between;
+      position: relative;
     }
 
-    &__close{
-      width: 20px;
-      height: 20px;
+    &__close {
+      width: 28px;
+      height: 28px;
       position: absolute;
-      top: 20px;
-      right: 32px;
+      top: 33px;
+      right: 28px;
       cursor: pointer;
     }
   }

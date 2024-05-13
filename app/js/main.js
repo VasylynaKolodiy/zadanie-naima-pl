@@ -126,10 +126,28 @@ function handleSvgPathHover() {
 function handleOpenModal() {
     $(`.facade__img svg path:not('.${STATUS.sold}')`).click(function() {
         $('.extra-box').addClass('open');
+
+        const lotNumber = `${$(this).data().lot}`;
+        const header = `Lot ${lotNumber}`;
+        $('.modal__header').text(header);
+
+        const img = $('<img src="" alt="lot"/>').attr({
+            src: `./images/plans/residence-lot-${lotNumber}.png`,
+            alt: 'Draft'
+        });
+        $('.modal__img').html(img);
+
     });
 
     $(`#table tbody tr:not('.${STATUS.sold}')`).click(function() {
         $('.extra-box').addClass('open');
+
+        const lotNumber = $(this).find('td:first-child').text();
+        const header = `Lot ${lotNumber}`;
+        $('.modal__header').text(header);
+
+
+
     })
 
 

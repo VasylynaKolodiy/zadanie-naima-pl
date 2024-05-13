@@ -61,6 +61,25 @@ button {
   cursor: pointer;
 }
 
+.button.button__icon {
+  padding: 10px 74px 10px 30px;
+  background-color: $background-table-head !important;
+  text-transform: uppercase;
+  justify-self: flex-end;
+  min-width: max-content;
+  flex-direction: row;
+  color: $color-table-head;
+
+  &::after {
+    content: url("../images/icons/button-down.svg");
+    position: absolute;
+    right: 30px;
+    top: 50%;
+    transform: translateY(-40%);
+    display: block;
+  }
+}
+
 .container {
   display: block;
   width: 100%;

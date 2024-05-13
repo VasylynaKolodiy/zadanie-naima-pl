@@ -98,25 +98,9 @@
     }
   }
 
-  .button__icon {
-    padding: 10px 30px;
+  .button__table {
     position: absolute;
     bottom: -104px;
     right: 0;
-    background-color: $background-table-head;
-    text-transform: uppercase;
-    justify-self: flex-end;
-    width: 180px;
-    flex-direction: row;
-    color: $color-table-head;;
-
-    &::after {
-      content: url("../../images/icons/button-down.svg");
-      position: absolute;
-      right: 30px;
-      top: 50%;
-      transform: translateY(-40%);
-      display: block;
-    }
   }
 }
