@@ -87,7 +87,7 @@ function fillTableWithData(data) {
         const row = $('<tr></tr>').addClass(rowData.statut);
         Object.entries(rowData).forEach(([key, value]) => {
             const unit = (['hab', 'balcon', 'terrasse'].includes(key)) ? 'm<sup>2</sup>' : '';
-            row.append(`<td>${value} ${value ? unit : ''}</td>`);
+            row.append(`<td>${value} ${value ? unit : '-'}</td>`);
         });
         applyStatusClassToLot(rowData);
         tbody.append(row);
@@ -138,6 +138,27 @@ function downloadFile() {
         $('.download').attr({href: `./images/plans/residence-lot-${lotNumber}.pdf`});
     });
 }
+
+function isVisible(elem) {
+    let coords = elem.getBoundingClientRect();
+    let windowHeight = $(window).height();
+    let topVisible = coords.top >= 0 && coords.top <= windowHeight;
+    let bottomVisible = coords.bottom <= windowHeight && coords.bottom >= 0;
+    return topVisible || bottomVisible;
+}
+
+const sections = $('.animation');
+$(window).on('scroll load', () => {
+    if (!$('.animation:not(.isAnimated)').length)
+        return;
+    sections.each(function(index, elem) {
+        if (isVisible(elem)) {
+            setTimeout(() => {
+                $(elem).addClass('isAnimated');
+            }, 200);
+        }
+    });
+});
 
 $(document).ready(() => {
     handleHeaderOnScroll();

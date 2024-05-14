@@ -21,18 +21,18 @@
 
       &.reserved.hover,
       &.reserved:hover {
-        fill: rgba(255, 165, 0, 0.5);
+        fill: rgba($color-orange, 0.8);
       }
 
       &.sold.hover,
       &.sold:hover {
-        fill: rgba(100, 0, 0, 0.5);
+        fill: rgba($color-red, 0.8);
         cursor: not-allowed;
       }
 
       &.available.hover,
       &.available:hover {
-        fill: rgba(0, 100, 0, 0.5);
+        fill: rgba($color-green, 0.8);
       }
     }
   }
@@ -70,18 +70,18 @@
 
         &.reserved.hover,
         &.reserved:hover {
-          background-color: rgba(255, 165, 0, 0.2);
+          background-color: rgba($color-orange, 0.2);
         }
 
         &.sold.hover,
         &.sold:hover {
-          background-color: rgba(100, 0, 0, 0.2);
+          background-color: rgba($color-red, 0.2);
           cursor: not-allowed;
         }
 
         &.available.hover,
         &.available:hover {
-          background-color: rgba(0, 100, 0, 0.2);
+          background-color: rgba($color-green, 0.2);
         }
       }
 
@@ -94,6 +94,36 @@
         letter-spacing: 0;
         text-align: center;
         border-bottom: 1px solid $background-table-head;
+      }
+
+      & tr td:last-child {
+        font-size: 0;
+        position: relative;
+      }
+
+      & tr td:last-child::before {
+        font-size: 0;
+        content: "";
+        display: block;
+        width: 10px;
+        height: 10px;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        border-radius: 50%;
+      }
+
+      & tr.reserved td:last-child::before {
+        background-color: $color-orange;
+      }
+
+      & tr.sold td:last-child::before {
+        background-color: $color-red;
+      }
+
+      & tr.available td:last-child::before {
+        background-color: $color-green;
       }
     }
   }

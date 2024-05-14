@@ -58,7 +58,6 @@
 
   .list {
     display: flex;
-    row-gap: 75px;
     position: relative;
     flex-wrap: wrap;
 
@@ -70,23 +69,38 @@
       gap: 50px;
     }
 
+    &__item:first-child,
+    &__item:nth-child(3) {
+      width: 40%;
+    }
+
+    &__item:nth-child(1),
+    &__item:nth-child(2) {
+      padding-bottom: 35px;
+    }
+
+    &__item:nth-child(3),
+    &__item:nth-child(4) {
+      padding-top: 35px;
+    }
+
+    &__item:nth-child(2n) {
+      margin-left: 44px;
+    }
+
+    &__item:nth-child(2n+1) {
+      padding-right: 44px;
+    }
+
+    &__item:nth-child(2n + 1) {
+      border-right: .5px solid $color-text-black;
+    }
+
     &__text {
       @include fontSize(700, 16px);
 
       line-height: 140%;
       color: $color-text-dark;
-    }
-
-    &::before {
-      content: "";
-      display: block;
-      position: absolute;
-      background-color: $color-text-black;
-      width: .5px;
-      top: 0;
-      left: 40%;
-      transform: translateX(-40%);
-      height: 100%;
     }
 
     &::after {
@@ -99,6 +113,20 @@
       top: 50%;
       transform: translateY(-50%);
       width: 80%;
+    }
+
+    &.animation path {
+      stroke-dasharray: 290px;
+      stroke-dashoffset: 290px;
+      stroke-width: 1;
+      fill: transparent;
+      transition: stroke-dashoffset 1.5s ease-in, fill .3s 1.5s, stroke-width .3s 1.5s;
+    }
+
+    &.isAnimated path {
+      stroke-dashoffset: 0;
+      fill: $color-text-dark;
+      stroke-width: 0;
     }
   }
 }
