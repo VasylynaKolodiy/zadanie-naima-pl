@@ -108,10 +108,10 @@ function handleTableHover() {
 }
 
 function handleSvgPathHover() {
-    $('.facade__img svg path').hover(function() {
+    $('.facade__img svg path').hover(function () {
         const lotNumber = $(this).data('lot');
         $(`#table tbody tr:nth-child(${lotNumber})`).addClass('hover');
-    }, function() {
+    }, function () {
         const lotNumber = $(this).data('lot');
         $(`#table tbody tr:nth-child(${lotNumber})`).removeClass('hover');
     });

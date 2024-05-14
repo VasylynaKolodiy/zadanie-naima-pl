@@ -68,7 +68,6 @@ button {
   justify-self: flex-end;
   min-width: max-content;
   flex-direction: row;
-  color: $color-table-head;
 
   &::after {
     content: url("../images/icons/button-down.svg");

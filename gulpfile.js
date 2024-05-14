@@ -1,11 +1,8 @@
-const { src, dest, watch, parallel, series } = require('gulp');
-// const scss = require('gulp-sass');
+const {src, dest, watch, parallel, series} = require('gulp');
 const sass = require('gulp-sass')(require('sass'));
 const concat = require('gulp-concat');
 const browserSync = require('browser-sync').create();
 const uglify = require('gulp-uglify-es').default;
-// const imagemin = require('gulp-imagemin');
-// const del = require('del');
 
 function browsersync() {
     browserSync.init({
@@ -24,13 +21,13 @@ async function images() {
     const imagemin = await import('gulp-imagemin');
     return src('app/images/**/*')
         .pipe(imagemin([
-            imagemin.gifsicle({ interlaced: true }),
-            imagemin.mozjpeg({ quality: 75, progressive: true }),
-            imagemin.optipng({ optimizationLevel: 5 }),
+            imagemin.gifsicle({interlaced: true}),
+            imagemin.mozjpeg({quality: 75, progressive: true}),
+            imagemin.optipng({optimizationLevel: 5}),
             imagemin.svgo({
                 plugins: [
-                    { removeViewBox: true },
-                    { cleanupIDs: false }
+                    {removeViewBox: true},
+                    {cleanupIDs: false}
                 ]
             })
         ]))
@@ -52,7 +49,7 @@ function scripts() {
 
 function styles() {
     return src('app/scss/style.scss')
-        .pipe(sass({ outputStyle: 'compressed' }))
+        .pipe(sass({outputStyle: 'compressed'}))
         .pipe(concat('style.min.css'))
         .pipe(dest('app/css'))
         .pipe(browserSync.stream());
@@ -64,7 +61,7 @@ function build() {
         'app/fonts/**/*',
         'app/js/main.min.js',
         'app/*.html'
-    ], { base: 'app' })
+    ], {base: 'app'})
         .pipe(dest('dist'));
 }
 

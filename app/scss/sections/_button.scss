@@ -1,6 +1,6 @@
 @import "../vars";
 
-.button{
+.button {
   cursor: pointer;
   padding: 16px 24px;
   backdrop-filter: blur(4px);
@@ -10,7 +10,7 @@
 
   @include fontSize(600, 16px);
 
-  &:hover{
+  &:hover {
     background-color: $background-button-hover;
   }
 }

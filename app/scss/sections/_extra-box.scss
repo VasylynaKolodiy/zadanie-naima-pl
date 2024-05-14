@@ -5,11 +5,11 @@
   .layer {
     position: fixed;
     z-index: 30;
-    top: 0;
-    right: 0;
+    inset: 0;
     background-color: transparent;
     transition: all 1s ease-in-out;
     cursor: pointer;
+    pointer-events: none;
   }
 
   .modal {
@@ -17,8 +17,8 @@
     max-height: 90vh;
     position: fixed;
     z-index: 40;
-    top: 50%;
-    left: -100%;
+    top: -100%;
+    left: 50%;
     transform: translate(-50%, -50%);
     background-color: white;
     transition: all 1s ease-in-out;
@@ -46,7 +46,7 @@
       justify-content: center;
       display: flex;
 
-      & img{
+      & img {
         object-fit: contain;
       }
     }
@@ -71,14 +71,12 @@
 
   &.open {
     .modal {
-      left: 50%;
+      top: 50%;
     }
 
     .layer {
-      bottom: 0;
-      left: 0;
       background-color: rgba($background-table-head, 0.9);
+      pointer-events: auto;
     }
-
   }
 }

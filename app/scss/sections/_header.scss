@@ -1,6 +1,6 @@
 @import "../vars";
 
-.header{
+.header {
   width: 100%;
   position: fixed;
   top: 0;
@@ -11,12 +11,12 @@
   &.fixed {
     background-color: $color-text;
 
-    .header__container{
+    .header__container {
       padding: 16px 52px;
     }
   }
 
-  &__container{
+  &__container {
     width: 100%;
     max-width: $size-max-width;
     margin: 0 auto;
@@ -28,13 +28,13 @@
     transition: padding .3s ease-in-out;
   }
 
-  & .logo{
+  & .logo {
     color: $color-text-light;
 
     @include fontSize(900, 36px);
   }
 
-  & .navigation{
+  & .navigation {
     display: flex;
     align-items: center;
     gap: $size-gap;
