@@ -142,7 +142,7 @@ function handleCloseModal() {
 function downloadFile() {
     $('.download').click(() => {
         const lotNumber = $('.modal__header').text().slice(-1);
-        $('.download').attr({href: `./images/plans/residence-lot-${lotNumber}.pdf`});
+        $('.download').attr({href: `./images/plans/Residence-lot-${lotNumber}.pdf`});
     });
 }
 
