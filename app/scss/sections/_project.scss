@@ -3,15 +3,6 @@
 .project {
   padding: 200px 0 475px 0;
 
-  .container{
-    transition: .5s;
-    opacity: 0;
-    transform: translateY(50px);
-    &.isAnimated {
-      transform: translateY(0);
-      opacity: 1;
-    }
-  }
 
   &__title {
     display: flex;
@@ -20,6 +11,7 @@
     position: relative;
     margin-bottom: 82px;
     color: $color-text;
+    transition-delay: .2s;
 
     &::after {
       content: "";
@@ -37,6 +29,7 @@
   &__label {
     margin-bottom: 82px;
     color: $color-text-black;
+    transition-delay: .3s
   }
 
   &__info {
@@ -51,7 +44,7 @@
 
   &__column:first-child {
     @include fontSize(400, 40px);
-
+    transition-delay: .4s;
     line-height: 125%;
     width: 40%;
   }
@@ -64,6 +57,7 @@
 
   &__description {
     margin-bottom: 116px;
+    transition-delay: .5s;
   }
 
   .list {
@@ -107,7 +101,8 @@
     }
 
     &__icon {
-      flex-shrink: 0
+      flex-shrink: 0;
+      padding: 0 2px;
     }
 
     &__text {

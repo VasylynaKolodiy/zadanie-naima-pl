@@ -40,6 +40,9 @@
 
       line-height: 120%;
     }
+    a:hover{
+      opacity: .7;
+    }
   }
 
   .wrapper {
@@ -58,8 +61,14 @@
       overflow: hidden;
       transition: .3s linear;
 
-      &:hover img{
-        transform: scale(1.1);
+      &:hover .slider__img{
+        transform: scale(1.05);
+      }
+    }
+
+    &.isAnimated{
+      img{
+        transform: scale(1);
       }
     }
 
@@ -68,6 +77,7 @@
       width: 100%;
       object-fit: cover;
       transition: .3s;
+      transform: scale(1.05);
     }
 
     & .slick-arrow {

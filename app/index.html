@@ -16,6 +16,7 @@
     <link rel="stylesheet" type="text/css"
           href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css"/>
     <link rel="stylesheet" href="css/style.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.6/dist/jquery.fancybox.min.css" rel="stylesheet" />
 </head>
 
 <body>
@@ -46,22 +47,22 @@
     </section>
 
     <section class="project" id="project">
-        <div class="container animation">
+        <div class="container">
             <div class="project__title">
-                <h2 class="title">
+                <h2 class="title animation animation-up">
                     Nouvelle approche de la conception
                 </h2>
                 <div class="button">Contact</div>
             </div>
 
-            <div class="project__label">Project</div>
+            <div class="project__label animation animation-up">Project</div>
 
             <div class="project__info">
-                <div class="project__column">
+                <div class="project__column animation animation-up">
                     Korem ipsum dolor sit amet, consectetur adipiscing elit.
                 </div>
                 <div class="project__column">
-                    <div class="project__description"> Etiam eu turpis molestie, dictum est a, mattis tellus.
+                    <div class="project__description animation animation-up"> Etiam eu turpis molestie, dictum est a, mattis tellus.
                         Sed dignissim, metus nec fringilla accumsan, risus sem sollicitudin lacus,
                         ut interdum tellus elit sed risus. Maecenas eget condimentum velit,
                         sit amet feugiat lectus. Class aptent taciti sociosqu ad
@@ -168,25 +169,35 @@
 
     <section class="gallery" id="gallery">
         <div class="wrapper">
-            <div class="slider">
+            <div class="slider animation">
                 <div class="slider__item">
-                    <img class="slider__img" src="./images/vis/1.jpg" alt="slider image">
+                    <a data-fancybox="gallery" href="images/vis/1.jpg">
+                        <img class="slider__img" src="./images/vis/1.jpg" alt="slider image">
+                    </a>
                 </div>
 
                 <div class="slider__item">
-                    <img class="slider__img" src="./images/vis/2.jpg" alt="slider image">
+                    <a data-fancybox="gallery" href="images/vis/2.jpg">
+                        <img class="slider__img" src="./images/vis/2.jpg" alt="slider image">
+                    </a>
                 </div>
 
                 <div class="slider__item">
-                    <img class="slider__img" src="./images/vis/3.jpg" alt="slider image">
+                    <a data-fancybox="gallery" href="images/vis/3.jpg">
+                        <img class="slider__img" src="./images/vis/3.jpg" alt="slider image">
+                    </a>
                 </div>
 
                 <div class="slider__item">
-                    <img class="slider__img" src="./images/vis/4.jpg" alt="slider image">
+                    <a data-fancybox="gallery" href="images/vis/4.jpg">
+                        <img class="slider__img" src="./images/vis/4.jpg" alt="slider image">
+                    </a>
                 </div>
 
                 <div class="slider__item">
-                    <img class="slider__img" src="./images/vis/5.jpg" alt="slider image">
+                    <a data-fancybox="gallery" href="./images/vis/5.jpg">
+                        <img class="slider__img" src="./images/vis/5.jpg" alt="slider image">
+                    </a>
                 </div>
             </div>
         </div>
@@ -324,6 +335,7 @@
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.6/dist/jquery.fancybox.min.js"></script>
 
 <script src="js/main.js"></script>
 </body>

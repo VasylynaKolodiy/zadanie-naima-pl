@@ -63,7 +63,7 @@ button {
 
 .button.button__icon {
   padding: 10px 74px 10px 30px;
-  background-color: $background-table-head !important;
+  background-color: $background-table-head;
   text-transform: uppercase;
   justify-self: flex-end;
   min-width: max-content;
@@ -117,4 +117,14 @@ button {
 
 ::-webkit-scrollbar-thumb:hover {
   background-color: $background-button-hover;
+}
+
+.animation-up{
+  transition: .3s;
+  opacity: 0;
+  transform: translateY(50px);
+  &.isAnimated {
+    transform: translateY(0);
+    opacity: 1;
+  }
 }
