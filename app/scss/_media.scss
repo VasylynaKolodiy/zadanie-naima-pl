@@ -1,7 +1,12 @@
 @import "./vars";
 
-@media (max-width: 1199px) {
+@media (max-width: 1460px) {
+  h1 {
+    @include fontSize(600, 80px);
+  }
+}
 
+@media (max-width: 1199px) {
   .container {
     padding: 0 75px;
   }
@@ -25,106 +30,78 @@
 
   .project {
     padding: 100px 0 400px 0;
-  }
 
-  .project__label {
-    margin-bottom: 42px;
-  }
+    &__label {
+      margin-bottom: 42px;
+    }
 
-  .project__title {
-    margin-bottom: 42px;
-  }
+    &__title {
+      margin-bottom: 42px;
+    }
 
-  .project__title::after {
-    bottom: -26px;
-  }
+    &__title::after {
+      bottom: -26px;
+    }
 
-  .project__column:first-child {
-    font-size: 32px;
-  }
+    &__column:first-child {
+      font-size: 32px;
+    }
 
-  .project__description {
-    font-size: 18px;
-  }
+    &__description {
+      font-size: 18px;
+    }
 
-  .project .list__item {
-    gap: 24px;
-  }
+    & .list__item {
+      gap: 24px;
+    }
 
-  .project .list__item:nth-child(2n) {
-    margin-left: 24px;
-  }
+    & .list__item:nth-child(2n) {
+      margin-left: 24px;
+    }
 
-  .project .list__item:nth-child(2n+1) {
-    padding-right: 24px;
-  }
+    & .list__item:nth-child(2n+1) {
+      padding-right: 24px;
+    }
 
-  .project .list__text {
-    font-size: 14px;
-  }
-
-  .facade .facade__img {
-    width: 50%;
-    flex-shrink: 0;
-  }
-
-  .facade__table {
-    overflow-x: auto;
-  }
-
-  .facade .button__table {
-    display: none;
-  }
-
-  .gallery .wrapper {
-    padding: 0 0 0 275px;
-  }
-
-  .gallery {
-    height: 400px;
-  }
-
-  .gallery .list__item:first-of-type .list__text {
-    font-size: 18px;
+    & .list__text {
+      font-size: 14px;
+    }
   }
 
   .facade {
     padding: 100px 75px 100px 56px;
     gap: 50px;
+
+    & .facade__img {
+      width: 50%;
+      flex-shrink: 0;
+    }
+
+    & .button__table {
+      display: none;
+    }
+
+    &__table {
+      overflow-x: auto;
+    }
+  }
+
+  .gallery {
+    height: 400px;
+
+    & .wrapper {
+      padding: 0 0 0 275px;
+    }
+
+    & .list__item:first-of-type .list__text {
+      font-size: 18px;
+    }
   }
 }
 
 @media (max-width: 1029px) {
-
-  .project .list {
-    width: 100%;
-  }
-
   .container {
     padding: 0 50px;
-  }
-
-  .project .list {
-    justify-content: flex-end;
-  }
-
-  .project__info {
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .project .list::after {
-    width: 100%;
-  }
-
-  .project__column:first-child,
-  .project__column:last-child {
-    width: 100%;
-  }
-
-  .gallery .wrapper,
-  .facade .wrapper {
-    padding-left: 50px;
   }
 
   .slider .slick-prev {
@@ -139,6 +116,37 @@
     top: 107% !important;
   }
 
+  .project {
+
+    & .list {
+      width: 100%;
+      justify-content: flex-end;
+
+      &::after {
+        width: 100%;
+      }
+    }
+
+    &__info {
+      flex-direction: column;
+      align-items: center;
+    }
+  }
+
+  .project__column:first-child,
+  .project__column:last-child {
+    width: 100%;
+  }
+
+  .gallery .wrapper,
+  .facade .wrapper {
+    padding-left: 50px;
+  }
+
+  .gallery__info {
+    padding: 0;
+  }
+
   .facade {
     padding: 100px 50px 100px 50px;
 
@@ -150,6 +158,11 @@
     & .button__table {
       width: max-content;
     }
+
+    & .table {
+      padding-bottom: 24px;
+      width: auto;
+    }
   }
 
   .gallery,
@@ -158,30 +171,22 @@
       padding: 0 0 0 50px;
     }
   }
-
-  .facade .table {
-    padding-bottom: 24px;
-    width: auto;
-  }
-
-  .gallery__info {
-    padding: 0;
-  }
 }
 
 @media(max-width: 991px) {
-  .facade {
-    gap: $size-gap;
-  }
-
   h1 {
     @include fontSize(600, 54px);
+  }
+
+  .facade {
+    gap: $size-gap;
   }
 
 }
 
 @media(max-width: 767px) {
   .project {
+    padding: 100px 0 320px 0;
 
     & .list li.list__item {
       width: 75%;
@@ -200,7 +205,6 @@
       font-size: 16px;
     }
 
-
     h2 {
       font-size: 22px;
     }
@@ -210,7 +214,7 @@
     }
 
     & .list {
-      justify-content: center;
+      justify-content: left;
     }
 
     & .list::after {
@@ -223,6 +227,10 @@
     }
   }
 
+  .extra-box .modal {
+    padding: 36px 10px 32px 10px;
+  }
+
   .extra-box.open .modal {
     width: 75%;
   }
@@ -231,6 +239,11 @@
     flex-direction: column;
     align-items: flex-start;
     gap: 20px;
+  }
+
+  .extra-box .modal__close {
+    top: 6px;
+    right: 10px;
   }
 
   .button.button__icon {
@@ -260,18 +273,11 @@
 
   .facade {
     flex-direction: column;
-  }
-
-  .facade .facade__img {
-    width: 100%;
-  }
-
-  .project {
-    padding: 100px 0 320px 0;
-  }
-
-  .facade {
     padding: 50px;
+
+    & .facade__img {
+      width: 100%;
+    }
   }
 
   .gallery .list {
@@ -279,19 +285,9 @@
     width: 100%;
     align-items: flex-start;
 
-  }
-
-  .gallery .list p {
-    display: inline;
-  }
-
-  .extra-box .modal__close {
-    top: 6px;
-    right: 10px;
-  }
-
-  .extra-box .modal {
-    padding: 36px 10px 32px 10px;
+    & p {
+      display: inline;
+    }
   }
 
 }
