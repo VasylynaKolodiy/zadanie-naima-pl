@@ -78,6 +78,13 @@ function initializeSlider() {
         slidesToScroll: 1,
         infinite: false,
         autoplaySpeed: 2000,
+        responsive: [{
+            breakpoint: 999,
+            settings: {
+                slidesToShow: 1,
+                slidesToScroll: 1,
+            }
+        }]
     });
 }
 

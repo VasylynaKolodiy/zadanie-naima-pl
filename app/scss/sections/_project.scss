@@ -3,6 +3,16 @@
 .project {
   padding: 200px 0 475px 0;
 
+  .container{
+    transition: .5s;
+    opacity: 0;
+    transform: translateY(50px);
+    &.isAnimated {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+
   &__title {
     display: flex;
     align-items: flex-end;
@@ -94,6 +104,10 @@
 
     &__item:nth-child(2n + 1) {
       border-right: .5px solid $color-text-black;
+    }
+
+    &__icon {
+      flex-shrink: 0
     }
 
     &__text {

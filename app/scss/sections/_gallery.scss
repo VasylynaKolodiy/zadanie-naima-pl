@@ -53,15 +53,21 @@
     position: relative;
 
     &__item {
-      padding: 0 56px 0 0;
+      margin: 0 56px 0 0;
       height: 400px;
       overflow: hidden;
+      transition: .3s linear;
+
+      &:hover img{
+        transform: scale(1.1);
+      }
     }
 
     &__img {
       height: 400px;
       width: 100%;
       object-fit: cover;
+      transition: .3s;
     }
 
     & .slick-arrow {

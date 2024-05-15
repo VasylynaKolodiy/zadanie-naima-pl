@@ -1,0 +1,297 @@
+@import "./vars";
+
+@media (max-width: 1199px) {
+
+  .container {
+    padding: 0 75px;
+  }
+
+  .button {
+    @include fontSize(600, 14px);
+    padding: 14px 18px;
+  }
+
+  h1 {
+    @include fontSize(600, 74px);
+  }
+
+  .header .logo {
+    @include fontSize(600, 28px);
+  }
+
+  .hero .arrow {
+    font-size: 16px;
+  }
+
+  .project {
+    padding: 100px 0 400px 0;
+  }
+
+  .project__label {
+    margin-bottom: 42px;
+  }
+
+  .project__title {
+    margin-bottom: 42px;
+  }
+
+  .project__title::after {
+    bottom: -26px;
+  }
+
+  .project__column:first-child {
+    font-size: 32px;
+  }
+
+  .project__description {
+    font-size: 18px;
+  }
+
+  .project .list__item {
+    gap: 24px;
+  }
+
+  .project .list__item:nth-child(2n) {
+    margin-left: 24px;
+  }
+
+  .project .list__item:nth-child(2n+1) {
+    padding-right: 24px;
+  }
+
+  .project .list__text {
+    font-size: 14px;
+  }
+
+  .facade .facade__img {
+    width: 50%;
+    flex-shrink: 0;
+  }
+
+  .facade__table {
+    overflow-x: auto;
+  }
+
+  .facade .button__table {
+    display: none;
+  }
+
+  .gallery .wrapper {
+    padding: 0 0 0 275px;
+  }
+
+  .gallery {
+    height: 400px;
+  }
+
+  .gallery .list__item:first-of-type .list__text {
+    font-size: 18px;
+  }
+
+  .facade {
+    padding: 100px 75px 100px 56px;
+    gap: 50px;
+  }
+}
+
+@media (max-width: 1029px) {
+
+  .project .list {
+    width: 100%;
+  }
+
+  .container {
+    padding: 0 50px;
+  }
+
+  .project .list {
+    justify-content: flex-end;
+  }
+
+  .project__info {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .project .list::after {
+    width: 100%;
+  }
+
+  .project__column:first-child,
+  .project__column:last-child {
+    width: 100%;
+  }
+
+  .gallery .wrapper,
+  .facade .wrapper {
+    padding-left: 50px;
+  }
+
+  .slider .slick-prev {
+    left: 40% !important;
+    transform: translateX(-40%) !important;
+    top: 107% !important;
+  }
+
+  .slider .slick-next {
+    left: 60% !important;
+    transform: translateX(-60%) rotate(180deg) !important;
+    top: 107% !important;
+  }
+
+  .facade {
+    padding: 100px 50px 100px 50px;
+
+    & div,
+    & .button__table {
+      width: 100%;
+    }
+
+    & .button__table {
+      width: max-content;
+    }
+  }
+
+  .gallery,
+  .facade {
+    .wrapper {
+      padding: 0 0 0 50px;
+    }
+  }
+
+  .facade .table {
+    padding-bottom: 24px;
+    width: auto;
+  }
+
+  .gallery__info {
+    padding: 0;
+  }
+}
+
+@media(max-width: 991px) {
+  .facade {
+    gap: $size-gap;
+  }
+
+  h1 {
+    @include fontSize(600, 54px);
+  }
+
+}
+
+@media(max-width: 767px) {
+  .project {
+
+    & .list li.list__item {
+      width: 75%;
+      margin: 0;
+      padding-bottom: 35px;
+      padding-top: 0;
+      border: none;
+      display: flex;
+    }
+
+    .project__column:first-child {
+      font-size: 26px;
+    }
+
+    .project__label {
+      font-size: 16px;
+    }
+
+
+    h2 {
+      font-size: 22px;
+    }
+
+    &__description {
+      margin-bottom: 50px;
+    }
+
+    & .list {
+      justify-content: center;
+    }
+
+    & .list::after {
+      display: none;
+    }
+
+    & .list__icon {
+      width: 48px;
+      height: 48px;
+    }
+  }
+
+  .extra-box.open .modal {
+    width: 75%;
+  }
+
+  .extra-box .modal__buttons {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+  }
+
+  .button.button__icon {
+    padding: 12px;
+    font-size: 12px;
+
+    &::after {
+      display: none;
+    }
+  }
+
+  .gallery {
+    height: 580px;
+
+    & .list {
+      flex-direction: column;
+      text-align: left;
+      width: 60%;
+      margin: 0 auto;
+      align-items: center;
+
+      & p {
+        text-align: center;
+      }
+    }
+  }
+
+  .facade {
+    flex-direction: column;
+  }
+
+  .facade .facade__img {
+    width: 100%;
+  }
+
+  .project {
+    padding: 100px 0 320px 0;
+  }
+
+  .facade {
+    padding: 50px;
+  }
+
+  .gallery .list {
+    gap: 12px;
+    width: 100%;
+    align-items: flex-start;
+
+  }
+
+  .gallery .list p {
+    display: inline;
+  }
+
+  .extra-box .modal__close {
+    top: 6px;
+    right: 10px;
+  }
+
+  .extra-box .modal {
+    padding: 36px 10px 32px 10px;
+  }
+
+}
