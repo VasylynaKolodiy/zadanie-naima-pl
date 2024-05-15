@@ -130,19 +130,13 @@ function handleOpenModal() {
         $('.extra-box').addClass('open');
         $('.modal__header').text(`Lot ${lotNumber}`);
         $('.modal__img').html(`<img src="./images/plans/residence-lot-${lotNumber}.png" alt="lot"/>`);
+        $('.download').attr({href: `./images/plans/Residence-lot-${lotNumber}.pdf`});
     });
 }
 
 function handleCloseModal() {
     $('.layer, .modal__close').click(() => {
         $('.extra-box').removeClass('open');
-    });
-}
-
-function downloadFile() {
-    $('.download').click(() => {
-        const lotNumber = $('.modal__header').text().slice(-1);
-        $('.download').attr({href: `./images/plans/Residence-lot-${lotNumber}.pdf`});
     });
 }
 
@@ -175,5 +169,4 @@ $(document).ready(() => {
     handleSvgPathHover();
     handleOpenModal();
     handleCloseModal();
-    downloadFile();
 });
