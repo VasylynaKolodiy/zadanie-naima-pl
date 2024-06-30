@@ -1,172 +1,337 @@
-const STATUS = {
-    available: 'available',
-    reserved: 'reserved',
-    sold: 'sold',
-};
+const animTop = document.querySelectorAll(".anim-top");
 
-const data = [
-    {
-        lot: 1,
-        pieces: "4.5 + JH",
-        etage: "Rez-de-Jardin",
-        hab: 113.5,
-        balcon: 23.3,
-        terrasse: 72.2,
-        statut: STATUS.reserved,
-    },
-
-    {
-        lot: 2,
-        pieces: "3.5",
-        etage: "Rez-de-Jardin",
-        hab: 86.9,
-        balcon: 19.0,
-        terrasse: 44.2,
-        statut: STATUS.available,
-    },
-
-    {
-        lot: 3,
-        pieces: "4.5 + JH",
-        etage: "Rez-de-Jardin",
-        hab: 113.7,
-        balcon: 23.3,
-        terrasse: 72.2,
-        statut: STATUS.available,
-    },
-
-    {
-        lot: 4,
-        pieces: "4.5 + JH",
-        etage: "Attique",
-        hab: 108.9,
-        balcon: 35.8,
-        terrasse: '',
-        statut: STATUS.available,
-    },
-
-    {
-        lot: 5,
-        pieces: "3.5 + JH",
-        etage: "Attique",
-        hab: 84.4,
-        balcon: 32.8,
-        terrasse: '',
-        statut: STATUS.sold,
-    },
-
-    {
-        lot: 6,
-        pieces: "4.5 + JH",
-        etage: "Attique",
-        hab: 109.1,
-        balcon: 35.8,
-        terrasse: '',
-        statut: STATUS.available,
-    },
-];
-
-function handleHeaderOnScroll() {
-    $(window).scroll(() => {
-        $(".header").toggleClass("fixed", $(window).scrollTop() > 0);
-    });
-}
-
-function initializeSlider() {
-    $('.slider').slick({
-        slidesToShow: 1.8,
-        slidesToScroll: 1,
-        infinite: false,
-        autoplaySpeed: 2000,
-        responsive: [{
-            breakpoint: 999,
-            settings: {
-                slidesToShow: 1,
-                slidesToScroll: 1,
-            }
-        }]
-    });
-}
-
-function fillTableWithData(data) {
-    const tbody = $('#table tbody');
-    data.forEach(rowData => {
-        const row = $('<tr></tr>').addClass(rowData.statut);
-        Object.entries(rowData).forEach(([key, value]) => {
-            const unit = (['hab', 'balcon', 'terrasse'].includes(key)) ? 'm<sup>2</sup>' : '';
-            row.append(`<td>${value} ${value ? unit : '-'}</td>`);
-        });
-        applyStatusClassToLot(rowData);
-        tbody.append(row);
-    });
-}
-
-function applyStatusClassToLot(rowData) {
-    $(`.lot-${rowData.lot}`).addClass(rowData.statut);
-}
-
-function handleTableHover() {
-    $('#table tbody tr').hover(function () {
-        const lotNumber = $(this).find('td:first-child').text();
-        $(`.lot-${lotNumber}`).addClass('hover');
-    }, () => {
-        $('.facade__img svg path').removeClass('hover');
-    });
-}
-
-function handleSvgPathHover() {
-    $('.facade__img svg path').hover(function () {
-        const lotNumber = $(this).data('lot');
-        $(`#table tbody tr:nth-child(${lotNumber})`).addClass('hover');
-    }, function () {
-        const lotNumber = $(this).data('lot');
-        $(`#table tbody tr:nth-child(${lotNumber})`).removeClass('hover');
-    });
-}
-
-function handleOpenModal() {
-    $('.facade__img svg path, #table tbody tr').not(`.${STATUS.sold}`).click(function () {
-        const lotNumber = $(this).data().lot || $(this).find('td:first-child').text().trim();
-        $('.extra-box').addClass('open');
-        $('.modal__header').text(`Lot ${lotNumber}`);
-        $('.modal__img').html(`<img src="./images/plans/residence-lot-${lotNumber}.png" alt="lot"/>`);
-        $('.download').attr({href: `./images/plans/Residence-lot-${lotNumber}.pdf`});
-    });
-}
-
-function handleCloseModal() {
-    $('.layer, .modal__close').click(() => {
-        $('.extra-box').removeClass('open');
-    });
-}
-
-function isVisible(elem) {
-    let coords = elem.getBoundingClientRect();
-    let windowHeight = $(window).height();
-    let topVisible = coords.top >= 0 && coords.top <= windowHeight;
-    let bottomVisible = coords.bottom <= windowHeight && coords.bottom >= 0;
-    return topVisible || bottomVisible;
-}
-
-const sections = $('.animation');
-$(window).on('scroll load', () => {
-    if (!$('.animation:not(.isAnimated)').length)
-        return;
-    sections.each(function(index, elem) {
-        if (isVisible(elem)) {
-            setTimeout(() => {
-                $(elem).addClass('isAnimated');
-            }, 200);
-        }
+animTop.forEach((section) => {
+    gsap.from(section.children, {
+        y: "+=70",
+        opacity: 0,
+        stagger: 0.4,
+        duration: 0.8,
+        delay: 0.4,
+        ease: "easeInOut",
+        scrollTrigger: {
+            trigger: section,
+            start: "-150% 20%",
+            // markers: true,
+            toggleActions: "play reverse play none",
+        },
     });
 });
 
-$(document).ready(() => {
-    handleHeaderOnScroll();
-    initializeSlider();
-    fillTableWithData(data);
-    handleTableHover();
-    handleSvgPathHover();
-    handleOpenModal();
-    handleCloseModal();
+const animTop2 = document.querySelectorAll(".anim-top2");
+
+animTop2.forEach((section) => {
+    gsap.from(section.children, {
+        y: "+=70",
+        opacity: 0,
+        stagger: 0.4,
+        duration: 0.8,
+        delay: 0.4,
+        ease: "easeInOut",
+        scrollTrigger: {
+            trigger: ".anim-top2",
+            start: "-195% 20%",
+            //  markers: true,
+            toggleActions: "play none  reverse none",
+        },
+    });
 });
+
+const animBottom = document.querySelectorAll(".anim-bottom");
+
+animBottom.forEach((section) => {
+    gsap.from(section.children, {
+        y: "-=70",
+        opacity: 0,
+        stagger: 0.4,
+        duration: 0.8,
+        delay: 0.5,
+        ease: "easeInOut",
+        scrollTrigger: {
+            trigger: section,
+            start: "-710% 20%",
+            // markers: true,
+            toggleActions: "play reverse play none",
+        },
+    });
+});
+
+const animBottom2 = document.querySelectorAll(".anim-bottom2");
+
+animBottom2.forEach((section) => {
+    gsap.from(section.children, {
+        y: "-=70",
+        opacity: 0,
+        stagger: 0.4,
+        duration: 0.8,
+        delay: 0.5,
+        ease: "easeInOut",
+        scrollTrigger: {
+            trigger: ".anim-bottom2",
+            start: "-190% 20%",
+            // markers: true,
+            toggleActions: "play none  reverse none",
+        },
+    });
+});
+
+const scale = document.querySelectorAll(".anim-scale");
+
+scale.forEach((section) => {
+    gsap.from(section.children, {
+        opacity: 0,
+        stagger: 0.4,
+        duration: 0.8,
+        ease: "easeInOut",
+        scale: 0.7,
+        delay: 0.5,
+        scrollTrigger: {
+            trigger: ".anim-scale",
+            start: "-80% 20%",
+            //  markers: true,
+            toggleActions: "play none  reverse none",
+        },
+    });
+});
+
+const animLeft = document.querySelectorAll(".anim-left");
+
+animLeft.forEach((section) => {
+    gsap.from(section.children, {
+        x: "-=70",
+        opacity: 0,
+        stagger: 0.2,
+        duration: 0.4,
+        // delay: 0.2,
+        ease: "easeInOut",
+        scrollTrigger: {
+            trigger: section,
+            start: "-380% 20%",
+            // markers: true,
+            toggleActions: "play none  reverse none",
+        },
+    });
+});
+
+const animLeft2 = document.querySelectorAll(".anim-left2");
+
+animLeft2.forEach((section) => {
+    gsap.from(section.children, {
+        x: "-=70",
+        opacity: 0,
+        stagger: 0.2,
+        duration: 0.6,
+
+        ease: "easeInOut",
+        scrollTrigger: {
+            trigger: ".anim-left2",
+            start: "-450% 20%",
+            // markers: true,
+            toggleActions: "play reverse play none",
+        },
+    });
+});
+
+const animLeft3 = document.querySelectorAll(".anim-left3");
+
+animLeft3.forEach((section) => {
+    gsap.from(section.children, {
+        x: "-=70",
+        opacity: 0,
+        stagger: 0.4,
+        duration: 0.8,
+        delay: 0.2,
+        ease: "easeInOut",
+        scrollTrigger: {
+            trigger: ".anim-left3",
+            start: "-85% 20%",
+            // markers: true,
+            toggleActions: "play none  reverse none",
+        },
+    });
+});
+
+const animRight = document.querySelectorAll(".anim-right");
+
+animRight.forEach((section) => {
+    gsap.from(section.children, {
+        x: "+=70",
+        opacity: 0,
+        stagger: 0.2,
+        duration: 0.8,
+        delay: 0.2,
+        ease: "easeInOut",
+        scrollTrigger: {
+            trigger: ".anim-right",
+            start: "-85% 20%",
+            // markers: true,
+            toggleActions: "play none  reverse none",
+        },
+    });
+});
+
+const icons = document.querySelectorAll(".animIcons");
+
+icons.forEach((icon) => {
+    gsap.from(icon.children, {
+        y: "-=70",
+        opacity: 0,
+        stagger: 0.2,
+        duration: 0.8,
+        ease: "easeInOut",
+        scrollTrigger: {
+            trigger: ".animIcons",
+            start: "-50% 20%",
+            // markers: true,
+            toggleActions: "play none  reverse none",
+        },
+    });
+});
+
+// show full img
+$(".showImg").click(function () {
+    var src = $(this).attr("data-src");
+    currentFullImg = parseInt($(this).attr("data-id"));
+    $("#fullscreen").addClass("active");
+    $("#fullscreen iframe").removeClass("active");
+    $("#fullscreen img").addClass("active");
+    $("#fullscreen img").attr("src", src);
+    $(".nav-btn").css("display", "none");
+    $(".close").css("display", "block");
+});
+
+$("#fullscreen .close").click(function () {
+    // var src = $(this).attr('data-src');
+    // currentFullImg = parseInt($(this).attr('data-id'));
+    $("#fullscreen").removeClass("active");
+    // $('#fullscreen iframe').removeClass('active');
+    // $('#fullscreen img').addClass('active');
+    // $('#fullscreen img').attr('src', src);
+    // $('.nav-btn').css('display', 'none');
+    console.log("klikkk");
+    // $('.close').css('display', 'block');
+});
+
+
+var curImg = 0;
+var length = $("#roller .imgShow").length;
+var navPrev = $(".gallery-nav-prev");
+var navNext = $(".gallery-nav-next");
+
+function changeImg(dir) {
+    if (dir == 0) {
+        curImg--;
+    }
+    if (dir == 1) {
+        curImg++;
+    }
+    if (curImg < 1) {
+        curImg = length;
+    }
+    if (curImg === 1) {
+        navPrev.addClass("hidden");
+    } else {
+        navPrev.removeClass("hidden");
+    }
+    if (curImg === length) {
+        navNext.addClass("hidden");
+    } else {
+        navNext.removeClass("hidden");
+    }
+
+    const el = $("#roller img:eq(" + (curImg - 1) + ")");
+    el.addClass("active");
+
+    if ($(window).width() >= 1600) {
+        $("#roller").css("left", -curImg * 65 + 65 + "vw");
+    }
+        // else if ($(window).width() >= 1300) {
+        //   $("#roller").css("left", -curImg * 100 + 100 + "%");
+        // } else if ($(window).width() >= 1024) {
+        //   $("#roller").css("left", -curImg * 100 + 100 + "%");
+        // }
+        // else {
+        //   $("#roller").css("left", -curImg * 1166 + 1166 + "px");
+    // }
+    else {
+        $("#roller").css("left", -curImg * 65 + 65 + "vw");
+    }
+}
+changeImg(1);
+var imgs = [];
+$("#roller .imgShow").each(function () {
+    imgs.push($(this).attr("data-src"));
+});
+
+var currentFullImg = 0;
+
+$(".imgShow").click(function () {
+    var src = $(this).attr("data-src");
+    $(".fullGallery").addClass("active");
+    $(".fullGallery .imgFullGallery").addClass("active");
+    $(".fullGallery .imgFullGallery").attr("src", src);
+
+    currentFullImg = parseInt($(this).attr("data-id"));
+});
+$(".close-btn").click(function () {
+    $(".fullGallery").removeClass("active");
+    setTimeout(function () {
+        $(".full-img").css("background-image", "");
+    }, 300);
+});
+
+function changeFullImg(direction) {
+    direction ? currentFullImg++ : currentFullImg--;
+    if (currentFullImg >= imgs.length) currentFullImg = 0;
+    if (currentFullImg < 0) currentFullImg = imgs.length - 1;
+    getNewImg(currentFullImg);
+}
+
+function getNewImg(index) {
+    $(".fullGallery .imgFullGallery").attr("src", imgs[index]);
+}
+
+$(".imgShow1").click(function () {
+    var src = $(this).attr("data-src");
+    $(".fullGallery1").addClass("active");
+    $(".fullGallery1 .imgFullGallery").addClass("active");
+    $(".fullGallery1 .imgFullGallery").attr("src", src);
+
+    currentFullImg = parseInt($(this).attr("data-id"));
+});
+$(".close-btn").click(function () {
+    $(".fullGallery1").removeClass("active");
+    setTimeout(function () {
+        $(".full-img").css("background-image", "");
+    }, 300);
+});
+
+
+function loading() {
+    $("#loading").addClass("hidden");
+}
+
+$(window).scroll(function () {
+    var scroll = $(window).scrollTop();
+    if (scroll >= 50) {
+        $("header").addClass("active");
+    } else {
+        $("header").removeClass("active");
+    }
+});
+
+$("#menu-btn").click(function () {
+    $("nav").toggleClass("active");
+    $("#menu-btn").toggleClass("active");
+});
+
+// $("#menu-main-menu li a").click(function () {
+//   $("nav").toggleClass("active");
+//   $("#menu-btn").toggleClass("active");
+// });
+
+$(".nav-container div ul li a").click(function () {
+    $("nav").toggleClass("active");
+    $("#menu-btn").toggleClass("active");
+});
+
+
