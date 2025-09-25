@@ -13,24 +13,25 @@ function browsersync() {
 }
 
 async function cleanDist() {
-    const del = await import('del');
-    return del('dist');
+    const {deleteAsync} = await import('del');
+    return deleteAsync('dist');
 }
 
 async function images() {
-    const imagemin = await import('gulp-imagemin');
+    const imagemin = (await import('gulp-imagemin')).default;
+    const imageminPlugins = [
+        imagemin.gifsicle({interlaced: true}),
+        imagemin.mozjpeg({quality: 75, progressive: true}),
+        imagemin.optipng({optimizationLevel: 5}),
+        imagemin.svgo({
+            plugins: [
+                {removeViewBox: true},
+                {cleanupIDs: false}
+            ]
+        })
+    ];
     return src('app/images/**/*')
-        .pipe(imagemin([
-            imagemin.gifsicle({interlaced: true}),
-            imagemin.mozjpeg({quality: 75, progressive: true}),
-            imagemin.optipng({optimizationLevel: 5}),
-            imagemin.svgo({
-                plugins: [
-                    {removeViewBox: true},
-                    {cleanupIDs: false}
-                ]
-            })
-        ]))
+        .pipe(imagemin(imageminPlugins))
         .pipe(dest('dist/images'));
 }
 
